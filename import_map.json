@@ -1,0 +1,15 @@
+{
+  "imports": {
+    "$fresh/": "https://deno.land/x/fresh@1.1.1/",
+    "preact": "https://esm.sh/preact@10.11.0",
+    "preact/": "https://esm.sh/preact@10.11.0/",
+    "preact-render-to-string": "https://esm.sh/*preact-render-to-string@5.2.4",
+    "@preact/signals": "https://esm.sh/*@preact/signals@1.0.3",
+    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.0.1",
+    "@trpc/server": "https://esm.sh/@trpc/server@10.0.0-proxy-beta.5",
+    "@trpc/client": "https://esm.sh/@trpc/client@10.0.0-proxy-beta.5",
+    "@trpc/server/adapters/fetch": "https://esm.sh/@trpc/server@10.0.0-proxy-beta.5/adapters/fetch",
+    "zod": "https://deno.land/x/zod@v3.19.1/mod.ts",
+    "@upstash/redis": "https://deno.land/x/upstash_redis/mod.ts"
+  }
+}
