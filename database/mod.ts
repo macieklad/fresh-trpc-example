@@ -6,8 +6,6 @@ export type User = {
   bio?: string;
 };
 
-console.log(Deno.env.get("UPSTASH_URL"), Deno.env.get("UPSTASH_TOKEN"))
-
 const redis = new Redis({
   url: Deno.env.get("UPSTASH_URL") || "",
   token: Deno.env.get("UPSTASH_TOKEN") || ""
