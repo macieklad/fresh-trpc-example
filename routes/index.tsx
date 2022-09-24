@@ -1,10 +1,13 @@
 import { Handler } from "$fresh/server.ts";
 import TrpcList from "../islands/TrpcList.tsx";
+import { getTrpcUrl } from "../trpc/client.ts";
 import { caller } from "../trpc/router.ts";
 
 export const handler: Handler = async (req, ctx) => {
   const users = await caller.getUsers();
-  return ctx.render({ users });
+  const trpcUrl = getTrpcUrl()
+
+  return ctx.render({ users, trpcUrl });
 };
 
 export default function Home({ data }: { data: Record<string, unknown> }) {
@@ -26,7 +29,7 @@ export default function Home({ data }: { data: Record<string, unknown> }) {
         limit so the demo may fail at some point. Try it locally with your own
         instance then :)
       </p>
-      <TrpcList />
+      <TrpcList url={data.trpcUrl as string} />
       <h5>Server rendered list</h5>
       <pre>{JSON.stringify(data.users, null, 2)}</pre>
     </div>

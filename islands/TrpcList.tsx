@@ -1,24 +1,25 @@
 import { computed, signal } from "@preact/signals";
-import { client } from "../trpc/client.ts";
+import { createClient } from "../trpc/client.ts";
 
-export default function TrpcList() {
+export default function TrpcList({ url }: { url: string}) {
   const users = signal({});
   const renderedUsers = computed(() => JSON.stringify(users.value, null, 2));
+  const client = signal(createClient(url))
 
   const creator = async () => {
-    await client.createUser.mutate({
+    await client.value.createUser.mutate({
       name: crypto.randomUUID(),
       bio: "An example bio",
     });
-    users.value = await client.getUsers.query();
+    users.value = await client.value.getUsers.query();
   };
 
   const fetcher = async () => {
-    users.value = await client.getUsers.query();
+    users.value = await client.value.getUsers.query();
   };
 
   const flusher = async () => {
-    await client.flushUsers.mutate();
+    await client.value.flushUsers.mutate();
     users.value = {};
   };
 
